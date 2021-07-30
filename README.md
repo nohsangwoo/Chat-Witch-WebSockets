@@ -54,3 +54,11 @@ link(rel="stylesheet", href="https://unpkg.com/mvp.css")
 
 - nodejs용 websocket 라이브러리 설치
   npm install ws
+
+# 1.3 WebSocket Events
+
+- 프론트 접속하면 처음으로 백엔드로 소켓연결되게 설정
+
+# 1.3 WebSocket Events
+
+- websockets
