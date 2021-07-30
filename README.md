@@ -9,6 +9,8 @@ Zoom Clone using nodeJS, webRTC and webSockets
     - 코드 변경사항이 있으면 자동으로 감지하고 서버를 재시작해줌
     - nodemon.json에 nodemon 설정파일에 설정사항 작성
     - package에서 nodemon실행 스크립트 작성 후 nodemon.json에서 실행하는 설정명령어(exec) 로 실행됨
+    - exec 옵션은 "babel-node src/server.js" 값을 가지는데 해당의미는 babel-node를 이용하여 src디렉토리의 server.js를 실행시켜라 라는 의미
+    - 이때 babel-node는 babel.config.json의 내용을 참고하여 해당 babel설정파일의 옵션을 기준으로 server.js를 실행한다.
 
     2) babel
     - npm install @babel/core @babel/cli @babel/node @babel/preset-env -D
@@ -45,3 +47,5 @@ Zoom Clone using nodeJS, webRTC and webSockets
 <!-- 위 내용을 pug 규칙에 맞춰 아래와같이 첨부한다 -->
 link(rel="stylesheet", href="https://unpkg.com/mvp.css")
 ```
+
+# 0.4 if client's try to connect to some other path then be redirection
