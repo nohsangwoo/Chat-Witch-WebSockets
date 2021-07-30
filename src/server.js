@@ -29,11 +29,30 @@ const server = http.createServer(app);
 
 const wss = new WebSocket.Server({ server });
 
-function handleConnection(socket) {
-  console.log(socket);
+function onSocketClose() {
+  console.log('Disconnected from the Browser ❌');
 }
-// websockets server running...
-wss.on('connection', handleConnection);
+
+function onSocketMessage(message) {
+  const translatedMessageData = message.toString('utf8');
+  console.log(translatedMessageData);
+}
+
+// 소켓연결을 요청이 들어오는경우 허용하는 로직
+// 연결이 성공하면 각 peer마다 socket정보가 전달되고 해당 socket을 이용하여 여러 작업이 가능
+wss.on('connection', socket => {
+  // nodejs에선 브라우저(frontend)랑 연결됐다고 콘솔찍는다
+  console.log('Connected to Browser ✅');
+
+  //  프론트엔드 브라우저에서 접속이 끊기면 작동하는 트리거
+  socket.on('close', onSocketClose);
+
+  //  프론트엔드에서 전달받은 데이터 처리
+  socket.on('message', onSocketMessage);
+
+  //   해당 메시지는 front에서 socket이벤트중 message트리거를 동작시킨다
+  socket.send('hello!!!');
+});
 
 //  http server running...
 server.listen(PORT, handleListen);

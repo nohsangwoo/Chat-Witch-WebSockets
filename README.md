@@ -62,3 +62,11 @@ link(rel="stylesheet", href="https://unpkg.com/mvp.css")
 # 1.3 WebSocket Events
 
 - websockets
+
+# 1.4 WebSocket Messages
+
+- socket에는 정해진 몇개의 트리거가 존재한다.
+  (open,message,close,message)
+  각각의 트리거에 해당하는 이벤트가 발생하면 어떤 작동을 할것인지 구현한다.
+
+# 1.5 refactoring and fix some bugs
