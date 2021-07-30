@@ -49,3 +49,8 @@ link(rel="stylesheet", href="https://unpkg.com/mvp.css")
 ```
 
 # 0.4 if client's try to connect to some other path then be redirection
+
+# 1.2 WebSockets in NodeJs
+
+- nodejs용 websocket 라이브러리 설치
+  npm install ws

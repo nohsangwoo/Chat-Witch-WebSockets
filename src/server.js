@@ -1,4 +1,6 @@
 import express from 'express';
+import http from 'http';
+import WebSocket from 'ws';
 
 const PORT = 3000;
 
@@ -14,10 +16,18 @@ app.set('views', __dirname + '/views');
 app.use('/public', express.static(__dirname + '/public'));
 
 // "/" 경로엔 home.pug 파일을 불러와 렌더링한다
-app.get('/', (req, res) => res.render('home'));
+app.get('/', (_, res) => res.render('home'));
 
 // 사용자가 지정된 경로 이외의 경로를 요청시 "/"으로 리다이렉션 시켜줌
-app.get('/*', (req, res) => res.redirect('/'));
+app.get('/*', (_, res) => res.redirect('/'));
 
-const handleListen = () => console.log(`listeningon http:localhost:${PORT}`);
-app.listen(PORT, handleListen);
+const handleListen = () => console.log(`listeningon  :localhost:${PORT}`);
+
+// http server 생성
+const server = http.createServer(app);
+// 일단 http 서버생성을 위한 소스
+
+const wss = new WebSocket.Server({ server });
+
+//  http server running...
+server.listen(PORT, handleListen);
