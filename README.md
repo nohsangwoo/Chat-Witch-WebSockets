@@ -70,3 +70,7 @@ link(rel="stylesheet", href="https://unpkg.com/mvp.css")
   각각의 트리거에 해당하는 이벤트가 발생하면 어떤 작동을 할것인지 구현한다.
 
 # 1.5 refactoring and fix some bugs
+
+# 1.6 Chat Completed
+
+- 프론트에서 message를 전달받으면 백엔드에서 현재 전달받은 메시지를 접속한 모든 유저에게 다시 전달해주는 작업 구현
