@@ -41,6 +41,9 @@ wss.on('connection', socket => {
   // 브라우저를 통해 nodejs로 연결된 peer가 있으면 연결된 해당 socket정보를 socketsList에 push 한다
   sockets.push(socket);
 
+  // 임시로 닉네임을 anon으로 설정
+  socket['nickname'] = 'Anon';
+
   // nodejs에선 브라우저(frontend)랑 연결됐다고 콘솔찍는다
   console.log('Connected to Browser ✅');
 
@@ -48,11 +51,22 @@ wss.on('connection', socket => {
   socket.on('close', onSocketClose);
 
   // 프론트에서 전달받은 데이터가 있는경우 동작한다
-  socket.on('message', message => {
-    const translatedMessageData = message.toString('utf8');
-    console.log(translatedMessageData);
+  socket.on('message', msg => {
+    console.log('socket', socket);
+
+    const message = JSON.parse(msg);
+    // const translatedMessageData = message.toString('utf8');
+
+    // console.log(translatedMessageData);
     // sockets list에 존재하는 모든 peer에게 특정 프론트에서 전달받은 데이터를 전송한다(broadcast와 동일한 작업)
-    sockets.forEach(aSocket => aSocket.send(translatedMessageData));
+    switch (message.type) {
+      case 'new_message':
+        sockets.forEach(aSocket =>
+          aSocket.send(`${socket.nickname}: ${message.payload}`)
+        );
+      case 'nickname':
+        socket['nickname'] = message.payload;
+    }
   });
 
   // //   해당 메시지는 front에서 socket이벤트중 message트리거를 동작시킨다

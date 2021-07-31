@@ -80,3 +80,7 @@ link(rel="stylesheet", href="https://unpkg.com/mvp.css")
 - 프론트에서 백엔트로 데이터를 보낼때 데이터의 객체형식으로 보내는데 해당 메시지의 type과 내용을 보내서 type의 경우에 따라 다른 동작을하도록 설정
   (마치 redux처럼 처리)
 - 프론트엔드에서 사용자의 닉네임 설정 처리
+
+# 1.8 Nicknames part Two
+
+- 백엔드에서 닉네임변경하는건지 메시지를 보내는건지 분기점에따라 switch문 처리한다.

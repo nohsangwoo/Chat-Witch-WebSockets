@@ -6,6 +6,7 @@ const messageForm = document.querySelector('#message');
 // 현재 백엔드와 프론트가 같은 host에 위치하니깐 window.location.host로 서버의 host를 알아내서 접속시킴
 const socket = new WebSocket(`ws://${window.location.host}`);
 
+// 백엔드로 메시지데이터를 보낼때 어떤 작업을 할건지 분기점을 나눌수있게(type이라는 키와 실제 메시지 데이터인 payload 키를 나눠서 객체로 보낸다)
 function makeMessage(type, payload) {
   const msg = { type, payload };
   return JSON.stringify(msg);
@@ -37,9 +38,9 @@ socket.addEventListener('close', () => {
 function handleSubmit(event) {
   event.preventDefault();
   const input = messageForm.querySelector('input');
-  console.log(input.value);
   // socket연결된 backend로 데이터 전송 (backend에선 message 트리거가 작동한다)
   socket.send(makeMessage('new_message', input.value));
+  // 모든 작업이 끝나면 input태그를 빈칸으로 초기화
   input.value = '';
 }
 
@@ -47,6 +48,8 @@ function handleNickSubmit(event) {
   event.preventDefault();
   const input = nickForm.querySelector('input');
   socket.send(makeMessage('nickname', input.value));
+  // 모든 작업이 끝나면 input태그를 빈칸으로 초기화
+  input.value = '';
 }
 
 // messageForm의 작동(백엔드로 메시지 보냄)
