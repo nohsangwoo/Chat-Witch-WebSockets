@@ -74,3 +74,9 @@ link(rel="stylesheet", href="https://unpkg.com/mvp.css")
 # 1.6 Chat Completed
 
 - 프론트에서 message를 전달받으면 백엔드에서 현재 전달받은 메시지를 접속한 모든 유저에게 다시 전달해주는 작업 구현
+
+# 1.7 Nicknames part One
+
+- 프론트에서 백엔트로 데이터를 보낼때 데이터의 객체형식으로 보내는데 해당 메시지의 type과 내용을 보내서 type의 경우에 따라 다른 동작을하도록 설정
+  (마치 redux처럼 처리)
+- 프론트엔드에서 사용자의 닉네임 설정 처리
