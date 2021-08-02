@@ -1,6 +1,6 @@
-# Zoom Clone
+# Chat With WEBSOCEKTS
 
-Zoom Clone using nodeJS, webRTC and webSockets
+- 기본으로 제공하는 WEBSOCKETS를 사용하여 아주 간단한 채팅 기능 구현
 
 ## 0.2 server setup
 
