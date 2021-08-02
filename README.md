@@ -1,6 +1,7 @@
 # Chat With WEBSOCEKTS
 
 - 기본으로 제공하는 WEBSOCKETS를 사용하여 아주 간단한 채팅 기능 구현
+    (Socket.IO 사용안함)
 
 ## 0.2 server setup
 
